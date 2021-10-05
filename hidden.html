@@ -8,6 +8,7 @@
 <body>
 
 <h2>Getting input</h2>
+
 <form>
     <label for="secret">Enter the secret word</label>
     <input id="form_secret" type="password" value="Indu">
@@ -16,11 +17,17 @@
     <input id="form_guess" type="text" >
 
     <input type="button" value="Check the guess" onclick="processGuess()">
-</form>
-
-<p id="result1">Result will display </p>
-
     
+</form>
+    <p id="result1">Result will display </p>
+<br>
+<br>
+<div class="container">
+   <img src="C:\Users\s545151\Downloads/cat.jpg" id="myImage" class="img-thumbnail" width="200" height="200" onclick="newImage()">
+</div>
+
+<br>
+<br>
 <form>
     <label for="form1_age">What is your age </label>
     <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
@@ -68,6 +75,25 @@ function resolveForm (){
               alert("Access denied")
               out.innerHTML="wrong count" + wrong
           }
+     }
+
+     var usingImage=1
+     function newImage(){
+         out=document.getElementById("myImage")
+         switch(usingImage){
+             case 1:
+                 out.src="cat.jpg";
+                 usingImage=2;
+             break;
+             case 2:
+                 out.src="Horse.jpg";
+                 usingImage=3;
+             break;
+             case 3:
+                 out.src="Tiger.jpg";
+                 usingImage=1;
+             break;
+         }
      }
 
 </script>
