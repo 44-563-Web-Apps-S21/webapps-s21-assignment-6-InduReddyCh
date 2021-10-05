@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Arithmetic page</title>
+</head>
+<body>
+<h3> Indu Chinthakuntla Computes</h3>
+<h2>Getting input</h2>
+<form>
+    <label for="firstvalue">Enter a base</label>
+    <input type ="number" value="10" id="first">
+    <label for="secondvalue">Enter an exponent</label>
+    <input type ="number" value="2" id="second">
+    <input type="button" value="Compute" onclick="powers()">
+</form>
+<p id="result1">Result will display</p>
+
+<form>
+    <label>+</label>
+    <input type="radio" name="cal" value="plus" id="plus1" onclick="processRadio()"><br>
+    <label>-</label>
+    <input type="radio" name="cal" value="minus" id="minus1" onclick="processRadio()"><br>
+    <label>*</label>
+    <input type="radio" name="cal" value="times" id="times1" onclick="processRadio()"><br>
+    <label>/</label>
+    <input type="radio" name="cal" value="divide" id="divide1" onclick="processRadio()"><br>
+</form>
+<p id="result2">Result will display</p>
+
+<!--<form>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+</form>
+
+
+<p id="result">This text will be replaced </p>-->
+
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+
+function powers(){
+    base=document.getElementById("first").value
+    exponent=document.getElementById("second").value
+    result=""
+    result1=""
+    out= document.getElementById("result1")
+    for(i=1;i<=exponent;i++){
+        result=Math.pow(base,i)
+        result1=result1+ result+ " "
+    }
+    out.innerHTML="powers of base are: "+ result1
+}
+
+function processRadio(){
+    base=document.getElementById("first").value
+    exponent=document.getElementById("second").value
+    var operators=document.getElementsByName("cal")
+    var plus=document.getElementById("plus1").value
+    var minus=document.getElementById("minus1").value
+    var times=document.getElementById("times1").value
+    var divide=document.getElementById("divide1").value
+    out= document.getElementById("result2")
+
+    if(operators[0].checked == true){
+        out.innerHTML= +base + +exponent
+    }
+    else if(operators[1].checked == true){
+        out.innerHTML= base - exponent
+    }
+    else if(operators[2].checked == true){
+        out.innerHTML= base * exponent
+    }
+    else if(operators[3].checked == true){
+        out.innerHTML= base / exponent
+    }
+    else{
+        out.innerHTML="invalid output"
+    }
+}
+</script>
+
+</body>
+</html> 
