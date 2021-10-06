@@ -2,7 +2,7 @@
 <html>
  <title>Assignmenet-6</title>
  <head>
-    <h3>Hidden things by Indu Chinthakuntla</h3>
+    <h3>Pass phrase by Indu Chinthakuntla</h3>
  </head>
  
 <body>
@@ -10,13 +10,13 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="secret">Enter the secret word</label>
+    <label for="secret">Enter the secret phrase</label>
     <input id="form_secret" type="password" value="Indu">
 
-    <label for="guess">Enter a guess</label>
+    <label for="guess">Enter a phrase</label>
     <input id="form_guess" type="text" >
 
-    <input type="button" value="Check the guess" onclick="processGuess()">
+    <input type="button" value="Check the phrase" onclick="processGuess()">
     
 </form>
     <p id="result1">Result will display </p>
@@ -72,9 +72,18 @@ function resolveForm (){
           }
           else{
               wrong++
+              if(wrong>=3){
+                  accountlocked();
+              }
+              else{
               alert("Access denied")
               out.innerHTML="wrong count" + wrong
+              }
           }
+     }
+
+     function accountlocked(){
+         alert("Account locked")
      }
 
      var usingImage=1
