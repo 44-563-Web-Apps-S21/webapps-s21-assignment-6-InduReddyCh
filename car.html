@@ -8,11 +8,11 @@
 <h3>Indu orders a car</h2>
 <form>
     <label>electric</label>
-    <input type="checkbox" id="box1" value="electric">
+    <input type="checkbox" id="box1" name="box" value="electric">
     <label>ac</label>
-    <input type="checkbox" id="box2" value="ac">
+    <input type="checkbox" id="box2" name="box" value="ac">
     <label>gps</label>
-    <input type="checkbox" id="box3" value="gps">
+    <input type="checkbox" id="box3" name="box" value="gps">
     <input type="button" value="Order a car" onclick="orderCar()">
 </form>
 <p id="result1">This text will be replaced </p>
@@ -25,6 +25,7 @@
     <input type="text" id="value1"><br>
     <input type="button" onclick="updateCar()" value="Update the car"><br>
 </form>
+<p id="result2">Result will be</p>
 
 <!--<form>
     <label for="form1_age">What is your age </label>
@@ -57,20 +58,40 @@ function resolveForm (){
 
 var my_car={}
 function orderCar(){
+    var box= document.getElementsByName("box")
     var electric= document.getElementById("box1");
-    out=document.getElementById("result1").value
-    if(electric.checked==true){
+    var ac= document.getElementById("box2");
+    var gps= document.getElementById("box3");
+    out=document.getElementById("result1")
+    if(box[0].checked == true){
         my_car.electric=true
     }
-    out.innerHTML=my_car
+    else{
+        my_car.electric=false
+    }
+    if(box[1].checked == true){
+        my_car.ac= true
+    }
+    else{
+        my_car.ac= false
+    }
+    if(box[2].checked == true){
+        my_car.gps= true
+    }
+    else{
+        my_car.gps= false
+    }
+    console.log(my_car);
+    out.innerHTML= "electric:"+my_car.electric +","+ "ac:"+my_car.ac+","+ "gps:"+my_car.gps
 }
 
 function updateCar(){
     property=document.getElementById("color1").value
     value1=document.getElementById("value1").value
-    my_car=["indu"]
-    out=document.getElementById("result1").value
-    out.innerHTML=my_car[0]
+    my_car.property="my_car["+property+"]="+value1
+    console.log(my_car);
+    out=document.getElementById("result2")
+    out.innerHTML=Object.values(my_car);
 }
 </script>
 
